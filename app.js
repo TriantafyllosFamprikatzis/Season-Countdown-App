@@ -1,9 +1,11 @@
-//Variables
+//Global variables
 let submitBtn = document.getElementsByClassName('submit-btn')[0];
 let userInput = document.getElementsByClassName('user-input')[0]; 
+let userForm = document.getElementById('user-form');
+let resetForm = document.getElementById('reset-form');
 
 
-
+//Functions
 function getTimeRemaining(endtime) {
   let t = Date.parse(endtime) - Date.parse(new Date());
   let seconds = Math.floor((t / 1000) % 60);
@@ -19,7 +21,6 @@ function getTimeRemaining(endtime) {
   };
 }
 
-
 function initializeClock(id, endtime) {
   let clock = document.getElementById(id);
   let daysSpan = clock.querySelector('.days');
@@ -29,30 +30,22 @@ function initializeClock(id, endtime) {
 
   function updateClock() {
     let t = getTimeRemaining(endtime);
-
     daysSpan.innerHTML = t.days;
     hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
     if (t.total <= 0) {
       clearInterval(timeinterval);
     }
   }
-
   updateClock();
   let timeinterval = setInterval(updateClock, 1000);
 }
-
 let deadline = 'March 09 2020 23:59:59';
 initializeClock('clockdiv', deadline);
 
 
-
-
-
 function calculateRemainingDays() {
-
   today = new Date();
   seasonEndDay = new Date(deadline);
   msPerDay = 24 * 60 * 60 * 1000 ;
@@ -62,13 +55,7 @@ function calculateRemainingDays() {
   hrsLeftRaw = (daysLeftRaw - daysLeft)*24;
   hrsLeft = Math.floor(hrsLeftRaw);
   minsLeft = Math.floor((hrsLeftRaw - hrsLeft)*60);
-
-  // document.write("<p>There are only <b>" + daysLeft + " days " + hrsLeft +" hours and " + minsLeft + " minutes left </b> Until March 09 2020</p>");
-
-};
-
-
-
+}; calculateRemainingDays();
 
 
 function preventLettersOnInput() {
@@ -83,24 +70,24 @@ function preventLettersOnInput() {
       }
     }
   });
-};
+}; preventLettersOnInput();
 
 
 function calculateLevelPerDay() {
   submitBtn.addEventListener('click', function(e) {
     e.preventDefault();
-
     const maxLevel = 100;
     let infoContainer = document.getElementsByClassName('info-container')[0];
     let currentLevel = userInput.value;
     let daysWithHours = Math.floor((hrsLeft / 24) * 100) / 100 + daysLeft;
     let levelPerDay = Math.round(((maxLevel - currentLevel) / daysWithHours) * 100) / 100;
-
-    const result = "<p> You need  to get <b>" + levelPerDay + " Level experience</b> per day  to reach <b>100lvl</b> before season ends</p>";
-
-    infoContainer.innerHTML = result; 
+    //create a variablw with max level
+    let result = "<p> You need  to level up by <b>" + levelPerDay + " experience</b> per day  to reach <b>100lvl</b> before season ends</p>";
+    infoContainer.innerHTML = result;
+    userForm.classList.add('hide');
+    resetForm.classList.remove('hide');
+    resetForm.classList.add('show');
   });
-    // this.value = ''; // Clears input // This has bug!!!!!
 };
 
 
@@ -109,30 +96,21 @@ function showLevel() {
     let val = parseInt(this.value);
     if ( val >= 1 && val <= 99 ) {
       calculateLevelPerDay();
-      
     } else if ( val == 100 ) {
       alert('Max level reached');
-
     } else {
       alert('Please ennter a number between 1 and 99');
-
     }
-    // this.value = ''; // Clears input // This has bug!!!!!
   });
-};
+}; showLevel();
 
 
-// Hit button to start again 
-function buttonReset() {};
-
-
-
-
-
-
-
-//Functions
-calculateRemainingDays();
-preventLettersOnInput();
-showLevel();
-buttonReset();
+function resetBtn() {
+  let resetBtn = document.getElementsByClassName('reset-btn')[0];
+  resetBtn.addEventListener('click', function() {
+    userForm.classList.remove('hide');
+    userForm.classList.add('show');
+    resetForm.classList.remove('show');
+    resetForm.classList.add('hide');
+  });
+}; resetBtn()

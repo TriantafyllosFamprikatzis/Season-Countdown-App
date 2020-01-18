@@ -10,6 +10,7 @@
   <body>
     <div class="main-container container-fluid">
       <h1>Countdown Clock</h1>
+      <div><p>It is impossible to predict the exact time of the day, so the countdown below is just an approximation timed to the midnight of March 9th.</p></div>
       <div id="clockdiv">
         <div>
           <span class="days"></span>
@@ -31,14 +32,19 @@
       <div class="row wrapper">
         <div class="col-6">
           <div class="col-6">
-            <form method="get">
+            <form method="get" id="user-form">
               <label for="username">Insert current Level</label>
               <input class="user-input" type="number" id="userinput">
-              <button class="submit-btn" type="button">Submit
+              <button class="submit-btn" type="button">Submit</button>
+              <!-- <button class="submit-btn" type="submit" value="submit">Submit</button> -->
             </form>          
           </div>
+          <div>
+            <form id="reset-form" class="hide">
+              <button class="reset-btn" type="submit" value="submit">Reset</button>
+            </form>
+          </div>
           <div class="info-container col-6"></div>
-        </div>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
