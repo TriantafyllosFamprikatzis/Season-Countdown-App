@@ -2,22 +2,74 @@
 let submitBtn = document.getElementsByClassName('submit-btn')[0];
 let userInput = document.getElementsByClassName('user-input')[0]; 
 
-function calculateRemainingDays() {
-  // setInterval( function() { // Set interval for every 1sec
-    today = new Date();
-    seasonEndDay = new Date("March 09, 2020");
-    msPerDay = 24 * 60 * 60 * 1000 ;
-    timeLeft = (seasonEndDay.getTime() - today.getTime());
-    daysLeftRaw = timeLeft / msPerDay;
-    daysLeft = Math.floor(daysLeftRaw);
-    hrsLeftRaw = (daysLeftRaw - daysLeft)*24;
-    hrsLeft = Math.floor(hrsLeftRaw);
-    minsLeft = Math.floor((hrsLeftRaw - hrsLeft)*60);
 
-    document.write("<p><b>FELLOW GUARDIAN</b></p>");
-    document.write("<p>There are only <b>" + daysLeft + " days " + hrsLeft +" hours and " + minsLeft + " minutes left </b> Until March 09 2020</p>");
-  // }, 1000);
+
+function getTimeRemaining(endtime) {
+  let t = Date.parse(endtime) - Date.parse(new Date());
+  let seconds = Math.floor((t / 1000) % 60);
+  let minutes = Math.floor((t / 1000 / 60) % 60);
+  let hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  let days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+
+function initializeClock(id, endtime) {
+  let clock = document.getElementById(id);
+  let daysSpan = clock.querySelector('.days');
+  let hoursSpan = clock.querySelector('.hours');
+  let minutesSpan = clock.querySelector('.minutes');
+  let secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    let t = getTimeRemaining(endtime);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  let timeinterval = setInterval(updateClock, 1000);
+}
+
+let deadline = 'March 09 2020 23:59:59';
+initializeClock('clockdiv', deadline);
+
+
+
+
+
+function calculateRemainingDays() {
+
+  today = new Date();
+  seasonEndDay = new Date(deadline);
+  msPerDay = 24 * 60 * 60 * 1000 ;
+  timeLeft = (seasonEndDay.getTime() - today.getTime());
+  daysLeftRaw = timeLeft / msPerDay;
+  daysLeft = Math.floor(daysLeftRaw);
+  hrsLeftRaw = (daysLeftRaw - daysLeft)*24;
+  hrsLeft = Math.floor(hrsLeftRaw);
+  minsLeft = Math.floor((hrsLeftRaw - hrsLeft)*60);
+
+  // document.write("<p>There are only <b>" + daysLeft + " days " + hrsLeft +" hours and " + minsLeft + " minutes left </b> Until March 09 2020</p>");
+
 };
+
+
+
+
 
 function preventLettersOnInput() {
   // To allow only numbers
@@ -33,6 +85,7 @@ function preventLettersOnInput() {
   });
 };
 
+
 function calculateLevelPerDay() {
   submitBtn.addEventListener('click', function(e) {
     e.preventDefault();
@@ -40,8 +93,8 @@ function calculateLevelPerDay() {
     const maxLevel = 100;
     let infoContainer = document.getElementsByClassName('info-container')[0];
     let currentLevel = userInput.value;
-    let levelPerDayRaw = (maxLevel - currentLevel) / daysLeft;
-    let levelPerDay = Math.round(levelPerDayRaw * 100) / 100;
+    let daysWithHours = Math.floor((hrsLeft / 24) * 100) / 100 + daysLeft;
+    let levelPerDay = Math.round(((maxLevel - currentLevel) / daysWithHours) * 100) / 100;
 
     const result = "<p> You need  to get <b>" + levelPerDay + " Level experience</b> per day  to reach <b>100lvl</b> before season ends</p>";
 
@@ -49,6 +102,7 @@ function calculateLevelPerDay() {
   });
     // this.value = ''; // Clears input // This has bug!!!!!
 };
+
 
 function showLevel() {
   $('.user-input').on('change', function() {
@@ -70,58 +124,6 @@ function showLevel() {
 
 // Hit button to start again 
 function buttonReset() {};
-
-
-
-
-
-
-
-
-function getTimeRemaining(endtime) {
-  var t = Date.parse(endtime) - Date.parse(new Date());
-  var seconds = Math.floor((t / 1000) % 60);
-  var minutes = Math.floor((t / 1000 / 60) % 60);
-  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-  var days = Math.floor(t / (1000 * 60 * 60 * 24));
-  return {
-    'total': t,
-    'days': days,
-    'hours': hours,
-    'minutes': minutes,
-    'seconds': seconds
-  };
-}
-
-function initializeClock(id, endtime) {
-  var clock = document.getElementById(id);
-  var daysSpan = clock.querySelector('.days');
-  var hoursSpan = clock.querySelector('.hours');
-  var minutesSpan = clock.querySelector('.minutes');
-  var secondsSpan = clock.querySelector('.seconds');
-
-  function updateClock() {
-    var t = getTimeRemaining(endtime);
-
-    daysSpan.innerHTML = t.days;
-    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-    if (t.total <= 0) {
-      clearInterval(timeinterval);
-    }
-  }
-
-  updateClock();
-  var timeinterval = setInterval(updateClock, 1000);
-}
-
-var deadline = 'March 09 2020 23:59:59';
-
-initializeClock('clockdiv', deadline);
-
-
 
 
 
