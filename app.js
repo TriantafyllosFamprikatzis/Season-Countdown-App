@@ -1,3 +1,5 @@
+import { quotesSection } from './quotes.js';
+
 //Global variables
 let submitBtn = document.getElementsByClassName('submit-btn')[0];
 let userInput = document.getElementsByClassName('user-input')[0]; 
