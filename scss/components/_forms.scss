@@ -2,3 +2,17 @@
   #FORMS
 \*------------------------------------*/
 
+.form-content {
+  .form-container {
+    .form-wrapper {
+      position: relative;
+
+      .posted-info-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}

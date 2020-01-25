@@ -374,6 +374,9 @@ html {
 
 body {
   font-family: "Ubuntu", sans-serif;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../images/tree_vex.jpg");
 }
 
 h2 {
@@ -391,27 +394,10 @@ a {
   font-size: 1.1rem;
 }
 
-body {
-  background-image: url("../images/saint.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-/* .main-container {
-  position: relative;
-}
-
-.wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
 h1 {
-  color: #72315a;
   font-weight: 100;
-  font-size: 40px;
-  margin: 40px 0px 20px;
+  font-size: 35px;
+  margin: 25px 0px 20px;
 }
 
 #clockdiv {
@@ -443,11 +429,45 @@ h1 {
 }
 
 .hide {
-  display: none;
+  visibility: hidden;
 }
 
 .show {
-  display: block;
+  visibility: visible;
+}
+
+header .title-content {
+  color: #fff;
+  background-color: #28293b;
+}
+
+footer {
+  padding: 7px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  background-color: #28293b;
+}
+footer p {
+  margin-top: 8px;
+}
+footer .github {
+  background-image: url("../images/github.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  text-indent: -9999px;
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+  background-size: 30px 30px;
+  opacity: 0.5;
+  transition: all 0.4s;
+}
+footer .github:hover {
+  opacity: 1;
 }
 
 /*------------------------------------*\
@@ -456,12 +476,34 @@ h1 {
 /*------------------------------------*\
   #BUTTONS
 \*------------------------------------*/
+.btn-primary {
+  border: 2px solid #000;
+  border-radius: 15px;
+  padding: 11px 39px;
+  background-color: grey;
+}
+
 /*------------------------------------*\
   #FORMS
 \*------------------------------------*/
+.form-content .form-container .form-wrapper {
+  position: relative;
+}
+.form-content .form-container .form-wrapper .posted-info-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /*------------------------------------*\
   #MAIN
 \*------------------------------------*/
+.main-container {
+  background: rgba(255, 255, 255, 0.5);
+  margin-top: 200px;
+}
+
 /*------------------------------------*\
   #NAVIGATION
 \*------------------------------------*/

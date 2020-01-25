@@ -8,49 +8,75 @@
     <title>Destiny Season Countdown</title>
   </head>
   <body>
-    <div class="main-container container-fluid">
-      <h1>Countdown Clock</h1>
-      <div><p>It is impossible to predict the exact time of the day, so the countdown below is just an approximation timed to the midnight of March 9th.</p></div>
-      <div id="clockdiv">
-        <div>
-          <span class="days"></span>
-          <div class="smalltext">Days</div>
-        </div>
-        <div>
-          <span class="hours"></span>
-          <div class="smalltext">Hours</div>
-        </div>
-        <div>
-          <span class="minutes"></span>
-          <div class="smalltext">Minutes</div>
-        </div>
-        <div>
-          <span class="seconds"></span>
-          <div class="smalltext">Seconds</div>
+    <header>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 text-center title-content px-0">
+            <h1 class="text-center">Destiny 2 Seasons</h1>
+          </div>
         </div>
       </div>
-      <div class="row wrapper">
-        <div class="col-6">
-          <div class="col-6">
-            <form method="get" id="user-form">
-              <label for="username">Insert current Level</label>
-              <input class="user-input" type="number" id="userinput">
-              <button class="submit-btn" type="button">Submit</button>
-              <!-- <button class="submit-btn" type="submit" value="submit">Submit</button> -->
-            </form>          
+    </header>
+    <main>
+      <div class="container col-10 col-sm-8 col-md-6 col-lg-4 mt-5 main-container">
+        <div class="row">
+          <div class="col-12 text-center clock-content mt-5 pt-5">
+            <h2>Season of Dawn Countdown</h2>
+            <div><p>It is impossible to predict the exact time of the day, so the countdown below is just an approximation timed to the midnight of March 9th as comunicated by Bungie.</p></div>
+            <div id="clockdiv">
+              <div>
+                <span class="days"></span>
+                <div class="smalltext">Days</div>
+              </div>
+              <div>
+                <span class="hours"></span>
+                <div class="smalltext">Hours</div>
+              </div>
+              <div>
+                <span class="minutes"></span>
+                <div class="smalltext">Minutes</div>
+              </div>
+              <div>
+                <span class="seconds"></span>
+                <div class="smalltext">Seconds</div>
+              </div>
+            </div>
           </div>
-          <div>
-            <form id="reset-form" class="hide">
-              <button class="reset-btn" type="submit" value="submit">Reset</button>
+        </div>
+        <div class="row justify-content-center form-content">
+          <div class="form-container col-6 mt-5 pt-5 text-center">
+            <h2>Level calculator</h2>
+            <p>Add your current level and hit the button to calculate how much level experience per day you need to reach max level before the season ends</p>
+            <form class="form-wrapper">
+              <div class="form-group" id="user-form">
+                <label for="userInput">Insert current Level</label>
+                <input type="number" class="form-control user-input" id="userInput" placeholder="1 to 99">
+                <button type="button" class="btn btn-primary mb-2 submit-btn mt-4">Hit me Guardian</button>
+              </div>
+              <div class="col-12 text-center posted-info-content">
+                <div class="info-container col-12 mt-2 align-center mx-auto"></div>
+              </div>
+              <div class="form-group hide reset-form-content" id="reset-form">
+                <button type="submit" class="btn btn-primary mb-2 reset-btn">Let's do it again!!</button>
+              </div>
             </form>
           </div>
-          <div class="info-container col-6"></div>
+        </div>
       </div>
-    </div>
+    </main>
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12 d-flex flex-row justify-content-center">
+            <p>Developed by Triantafyllos Famprikatzis © 2020</p>
+            <a href="https://github.com/TriantafyllosFamprikatzis" target="blank" class="social github">Github</a>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="dist/main.js"></script>
   </body>
 </html>
-
