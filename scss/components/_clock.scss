@@ -1,0 +1,43 @@
+.clock-container {
+  margin: 30px 0;
+  background-color: #080808;
+  border-radius: 5px;
+  padding: 25px 20px;
+  -webkit-box-shadow: 0px 0px 68px 16px rgba(247,247,250,0.77);
+  -moz-box-shadow: 0px 0px 68px 16px rgba(247,247,250,0.77);
+  box-shadow: 0px 0px 68px 16px rgba(247,247,250,0.77);
+  // box-shadow: 1px 1px 5px rgba(255,255,255,.15), 0 15px 90px 30px rgba(0,0,0,.25);
+
+  .clock__col {
+    text-align: center;
+    margin-right: 5px;
+    margin-left: 5px;
+    min-width: 66px;
+    position: relative;
+
+    &:not(:last-child):before { top: 26%; }
+    &:not(:last-child):after { top: 40%; }
+    &:not(:last-child):before,
+    &:not(:last-child):after{
+      content: "";
+      background-color: rgba(255,255,255,.3);
+      height: 5px;
+      width: 5px;
+      border-radius: 50%;
+      display: block;
+      position: absolute;
+      right: -9px;
+    }
+
+    &--timer {
+      color: $white;
+      font-size: 3.2rem; 
+    }
+
+    &--text {
+      color: rgba(255,255,255,.35);
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+  }
+}

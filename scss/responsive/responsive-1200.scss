@@ -1,0 +1,16 @@
+.clock-container {
+  .clock__col {
+    margin-right: 28px;
+    margin-left: 28px;
+    min-width: 90px;
+
+    &--timer { font-size: 4.2rem;}
+    &:not(:last-child):before { top: 35%; }
+    &:not(:last-child):after { top: 50%; }
+    &:not(:last-child):before,
+    &:not(:last-child):after{
+      content: "";
+      right: -42px;
+    }
+  }
+}

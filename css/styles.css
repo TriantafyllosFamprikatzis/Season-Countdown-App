@@ -377,6 +377,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("../images/tree_vex.jpg");
+  background-color: #28293b;
 }
 
 h2 {
@@ -398,34 +399,6 @@ h1 {
   font-weight: 100;
   font-size: 35px;
   margin: 25px 0px 20px;
-}
-
-#clockdiv {
-  font-family: sans-serif;
-  color: #fff;
-  display: inline-block;
-  font-weight: 100;
-  text-align: center;
-  font-size: 30px;
-}
-
-#clockdiv > div {
-  padding: 10px;
-  border-radius: 3px;
-  background: #b868b7;
-  display: inline-block;
-}
-
-#clockdiv div > span {
-  padding: 15px;
-  border-radius: 3px;
-  background: #fe8aff;
-  display: inline-block;
-}
-
-.smalltext {
-  padding-top: 5px;
-  font-size: 16px;
 }
 
 .hide {
@@ -483,6 +456,48 @@ footer .github:hover {
   background-color: grey;
 }
 
+.clock-container {
+  margin: 30px 0;
+  background-color: #080808;
+  border-radius: 5px;
+  padding: 25px 20px;
+  -webkit-box-shadow: 0px 0px 68px 16px rgba(247, 247, 250, 0.77);
+  -moz-box-shadow: 0px 0px 68px 16px rgba(247, 247, 250, 0.77);
+  box-shadow: 0px 0px 68px 16px rgba(247, 247, 250, 0.77);
+}
+.clock-container .clock__col {
+  text-align: center;
+  margin-right: 5px;
+  margin-left: 5px;
+  min-width: 66px;
+  position: relative;
+}
+.clock-container .clock__col:not(:last-child):before {
+  top: 26%;
+}
+.clock-container .clock__col:not(:last-child):after {
+  top: 40%;
+}
+.clock-container .clock__col:not(:last-child):before, .clock-container .clock__col:not(:last-child):after {
+  content: "";
+  background-color: rgba(255, 255, 255, 0.3);
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  right: -9px;
+}
+.clock-container .clock__col--timer {
+  color: #fff;
+  font-size: 3.2rem;
+}
+.clock-container .clock__col--text {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
 /*------------------------------------*\
   #FORMS
 \*------------------------------------*/
@@ -513,5 +528,25 @@ footer .github:hover {
 /*------------------------------------*\
   #WIDGETS
 \*------------------------------------*/
+@media (min-width: 1200px) {
+  .clock-container .clock__col {
+    margin-right: 28px;
+    margin-left: 28px;
+    min-width: 90px;
+  }
+  .clock-container .clock__col--timer {
+    font-size: 4.2rem;
+  }
+  .clock-container .clock__col:not(:last-child):before {
+    top: 35%;
+  }
+  .clock-container .clock__col:not(:last-child):after {
+    top: 50%;
+  }
+  .clock-container .clock__col:not(:last-child):before, .clock-container .clock__col:not(:last-child):after {
+    content: "";
+    right: -42px;
+  }
+}
 
 /*# sourceMappingURL=styles.css.map */

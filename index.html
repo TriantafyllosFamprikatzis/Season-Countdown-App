@@ -18,30 +18,34 @@
       </div>
     </header>
     <main>
-      <div class="container col-10 col-sm-8 col-md-6 col-lg-4 mt-5 main-container">
+      <div class="container col-12 col-md-10 mt-5 main-container p-0 p-sm-2">
         <div class="row">
           <div class="col-12 text-center clock-content mt-5 pt-5">
-            <h2>Season of Dawn Countdown</h2>
+            <h2>Season Countdown</h2>
             <div><p>It is impossible to predict the exact time of the day, so the countdown below is just an approximation timed to the midnight of March 9th as comunicated by Bungie.</p></div>
-            <div id="clockdiv">
-              <div>
-                <span class="days"></span>
-                <div class="smalltext">Days</div>
+          </div>
+        <div class="row justify-content-center mx-auto">
+          <div class="col-12 p-0 p-sm-2">
+            <div id="clockdiv" class="clock-container d-flex justify-content-center">
+              <div class="clock clock__col">
+                <span class="days clock__col--timer"></span>
+                <div class="clock__col--text">Days</div>
               </div>
-              <div>
-                <span class="hours"></span>
-                <div class="smalltext">Hours</div>
+              <div class="clock clock__col">
+                <span class="hours clock__col--timer"></span>
+                <div class="clock__col--text">Hours</div>
               </div>
-              <div>
-                <span class="minutes"></span>
-                <div class="smalltext">Minutes</div>
+              <div class="clock clock__col">
+                <span class="minutes clock__col--timer"></span>
+                <div class="clock__col--text">Minutes</div>
               </div>
-              <div>
-                <span class="seconds"></span>
-                <div class="smalltext">Seconds</div>
+              <div class="clock clock__col">
+                <span class="seconds clock__col--timer"></span>
+                <div class="clock__col--text">Seconds</div>
               </div>
             </div>
           </div>
+        </div>
         </div>
         <div class="row justify-content-center form-content">
           <div class="form-container col-6 mt-5 pt-5 text-center">
