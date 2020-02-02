@@ -380,6 +380,12 @@ body {
   background-color: #28293b;
 }
 
+h1 {
+  font-weight: 100;
+  font-size: 35px;
+  margin: 25px 0px 20px;
+}
+
 h2 {
   font-size: 2.2rem;
 }
@@ -392,17 +398,12 @@ select,
 textarea,
 p,
 a {
-  font-size: 1.1rem;
-}
-
-h1 {
-  font-weight: 100;
-  font-size: 35px;
-  margin: 25px 0px 20px;
+  font-size: 1.5rem;
 }
 
 .hide {
   visibility: hidden;
+  height: 0;
 }
 
 .show {
@@ -457,13 +458,10 @@ footer .github:hover {
 }
 
 .clock-container {
-  margin: 30px 0;
+  margin: 15px 0 30px 0;
   background-color: #080808;
   border-radius: 5px;
   padding: 25px 20px;
-  -webkit-box-shadow: 0px 0px 68px 16px rgba(247, 247, 250, 0.77);
-  -moz-box-shadow: 0px 0px 68px 16px rgba(247, 247, 250, 0.77);
-  box-shadow: 0px 0px 68px 16px rgba(247, 247, 250, 0.77);
 }
 .clock-container .clock__col {
   text-align: center;
@@ -504,7 +502,7 @@ footer .github:hover {
 .form-content .form-container .form-wrapper {
   position: relative;
 }
-.form-content .form-container .form-wrapper .posted-info-content {
+.form-content .form-container .form-wrapper .posted-info-content.show {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -515,7 +513,7 @@ footer .github:hover {
   #MAIN
 \*------------------------------------*/
 .main-container {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
   margin-top: 200px;
 }
 
