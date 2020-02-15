@@ -1,9 +1,10 @@
 //Global variables
 let submitBtn = document.getElementsByClassName('submit-btn')[0];
 let userInput = document.getElementsByClassName('user-input')[0]; 
+let userCurrentLevel = document.getElementById('userCurrentLevel');
+let levelToReach = document.getElementById('levelToReach');
 let userForm = document.getElementById('user-form');
 let resetForm = document.getElementById('reset-form');
-
 
 //Functions
 function getTimeRemaining(endtime) {
@@ -76,13 +77,12 @@ function preventLettersOnInput() {
 function calculateLevelPerDay() {
   submitBtn.addEventListener('click', function(e) {
     e.preventDefault();
-    const maxLevel = 100;
+    const maxLevel = levelToReach.value;
     let infoContainer = document.getElementsByClassName('info-container')[0];
-    let currentLevel = userInput.value;
+    let currentLevel = userCurrentLevel.value;
     let daysWithHours = Math.floor((hrsLeft / 24) * 100) / 100 + daysLeft;
     let levelPerDay = Math.round(((maxLevel - currentLevel) / daysWithHours) * 100) / 100;
-    //create a variablw with max level
-    let result = "<p> You need  to level up by <b>" + levelPerDay + " experience</b> per day  to reach <b>100lvl</b> before season ends</p>";
+    let result = "<p> You need  to level up by <b>" + levelPerDay + " experience</b> per day to reach <b>" + maxLevel + "lvl</b> before season ends</p>";
     infoContainer.innerHTML = result;
     userForm.classList.add('hide');
     resetForm.classList.remove('hide');
