@@ -1,6 +1,6 @@
 //Global variables
 let submitBtn = document.getElementsByClassName('submit-btn')[0];
-let userInput = document.getElementsByClassName('user-input')[0]; 
+let userInput = document.querySelectorAll('.user-input'); 
 let userCurrentLevel = document.getElementById('userCurrentLevel');
 let levelToReach = document.getElementById('levelToReach');
 let userForm = document.getElementById('user-form');
@@ -60,16 +60,17 @@ function calculateRemainingDays() {
 
 
 function preventLettersOnInput() {
-  // To allow only numbers
-  userInput.addEventListener('keydown', function(e) {
-    if ( e.shiftKey || e.ctrlKey || e.altKey ) {
-      e.preventDefault();
-    } else {
-    let key = e.keyCode;
-      if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
+  userInput.forEach( item => {
+    item.addEventListener('keydown', function(e) {
+      if ( e.shiftKey || e.ctrlKey || e.altKey ) {
         e.preventDefault();
+      } else {
+      let key = e.keyCode;
+        if (!((key == 8) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
+          e.preventDefault();
+        }
       }
-    }
+    });
   });
 }; preventLettersOnInput();
 
@@ -92,16 +93,22 @@ function calculateLevelPerDay() {
 
 
 function showLevel() {
-  $('.user-input').on('change', function() {
-    let val = parseInt(this.value);
-    if ( val >= 1 && val <= 99 ) {
-      calculateLevelPerDay();
-    } else if ( val == 100 ) {
-      alert('Max level reached');
-    } else {
-      alert('Please ennter a number between 1 and 99');
-    }
+  userInput.forEach( item => {
+    item.addEventListener('change', function() {
+      let val = parseInt(this.value);
+      if ( val >= 1 && val <= 99 ) {
+        calculateLevelPerDay();
+      } else if ( val == 100 ) {
+        alert('Max level reached');
+      } else {
+        alert('Please ennter a number between 1 and 99');
+      }
+    });
   });
+
+  // if (event.keyCode === 13) {
+  //   calculateLevelPerDay();
+  // }
 }; showLevel();
 
 
