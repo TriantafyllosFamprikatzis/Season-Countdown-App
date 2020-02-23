@@ -119,14 +119,14 @@ function submitBtnInit() {
     submitBtnClicked = true;
     let firstInputOnSubmit = userCurrentLevel.value;
     let secondInputOnSubmit = levelToReach.value;
-    if ( firstInputOnSubmit >= 1 && secondInputOnSubmit >=1 && firstInputOnSubmit <= 99 && secondInputOnSubmit <= 99 ) {
+    if ( firstInputOnSubmit >= 1 && secondInputOnSubmit >= 1 && firstInputOnSubmit <= 99 && secondInputOnSubmit <= 99 ) {
       if ( submitBtnClicked == true && secondInputCorrectValue == true && firstInputCorrectValue == true && firstInputOnSubmit < secondInputOnSubmit ) {
         calculateLevelPerDay();
         resetForm.classList.remove('d-none');
         resetForm.classList.add('d-block');
         userForm.classList.remove('d-block');
         userForm.classList.add('d-none');
-      } else if ( submitBtnClicked == true && firstInputOnSubmit >= 1 && firstInputOnSubmit <= 99 && secondInputOnSubmit >=1 && secondInputOnSubmit <=100 && firstInputOnSubmit > secondInputOnSubmit ) {
+      } else if ( submitBtnClicked == true && firstInputOnSubmit >= 1 && firstInputOnSubmit <= 99 && secondInputOnSubmit >= 1 && secondInputOnSubmit <= 100 && firstInputOnSubmit > secondInputOnSubmit ) {
         event.preventDefault();
         alert('Enter a level higher than your current level');
         firstInputCorrectValue = false;
@@ -151,7 +151,7 @@ function submitBtnInit() {
       firstInputCorrectValue = false;
       enterKeyClicked = false;
       submitBtnClicked = false;
-    } else if (  submitBtnClicked == true && secondInputOnSubmit == 0 || secondInputOnSubmit >= 101 ) {
+    } else if ( submitBtnClicked == true && secondInputOnSubmit == 0 || secondInputOnSubmit >= 101 ) {
       event.preventDefault();
       alert('Please enter a number between 1 and 100');
       secondInputCorrectValue = false;
