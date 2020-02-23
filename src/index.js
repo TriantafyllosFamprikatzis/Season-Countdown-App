@@ -119,7 +119,7 @@ function submitBtnInit() {
     submitBtnClicked = true;
     let firstInputOnSubmit = userCurrentLevel.value;
     let secondInputOnSubmit = levelToReach.value;
-    if ( firstInputOnSubmit >= 1 && secondInputOnSubmit >= 1 && firstInputOnSubmit <= 99 && secondInputOnSubmit <= 99 ) {
+    if ( firstInputOnSubmit >= 1 && secondInputOnSubmit >= 1 && firstInputOnSubmit <= 99 && secondInputOnSubmit <= 100 ) {
       if ( submitBtnClicked == true && secondInputCorrectValue == true && firstInputCorrectValue == true && firstInputOnSubmit < secondInputOnSubmit ) {
         calculateLevelPerDay();
         resetForm.classList.remove('d-none');
