@@ -401,15 +401,6 @@ a {
   font-size: 1.5rem;
 }
 
-.hide {
-  visibility: hidden;
-  height: 0;
-}
-
-.show {
-  visibility: visible;
-}
-
 header .title-content {
   color: #fff;
   background-color: #28293b;
