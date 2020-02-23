@@ -130,12 +130,14 @@ function submitBtnInit() {
         event.preventDefault();
         alert('Enter a level higher than your current level');
         firstInputCorrectValue = false;
+        secondInputCorrectValue = false;
         enterKeyClicked = false;
         submitBtnClicked = false;
       } else if ( submitBtnClicked == true && firstInputOnSubmit >= 1 && firstInputOnSubmit <= 99 && secondInputOnSubmit >= 1 && secondInputOnSubmit <= 100 && firstInputOnSubmit == secondInputOnSubmit ) {
         event.preventDefault();
         alert('Level reached');
         firstInputCorrectValue = false;
+        secondInputCorrectValue = false;
         enterKeyClicked = false;
         submitBtnClicked = false;
       }
