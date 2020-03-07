@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Spartan:400,700,900&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="css/styles.css">
     <title>Destiny Season Countdown</title>
   </head>
-  <body>
+  <body class="d-flex flex-column">
     <header>
       <div class="container-fluid">
         <div class="row">
@@ -17,7 +18,7 @@
         </div>
       </div>
     </header>
-    <main>
+    <main class="mb-5">
       <div class="container col-12 col-md-6 mt-5 main-container p-0 p-sm-2">
         <div class="row">
           <div class="col-11 col-md-9 text-center clock-content mt-5 mx-auto">
@@ -55,14 +56,18 @@
         </div>
         <div class="row justify-content-center form-content">
           <div class="form-container col-12 mt-2 text-center">
-            <!--<This stops form from submitting>-->
             <form class="form-wrapper" onSubmit="return false">
-            <!-- <form class="form-wrapper"> -->
               <div class="form-group" id="user-form">
-                <label for="userInput">Your current Level</label>
-                <input type="number" class="form-control user-input col-3 col-sm-2 mx-auto" id="userCurrentLevel" placeholder="1 to 99">
-                <label for="levelToReach">Level to grind</label>
-                <input type="number" class="form-control user-input col-3 col-sm-2 mx-auto" id="levelToReach" placeholder="1 to 99">
+                <div class="inputForms d-flex justify-content-center">
+                  <div class="topInput m-3">
+                    <label for="userInput">Your current Level</label>
+                    <input type="number" class="form-control user-input mx-auto" id="userCurrentLevel" placeholder="1 to 99">
+                  </div>
+                  <div class="bottomInput m-3">
+                    <label for="levelToReach">Level to grind</label>
+                    <input type="number" class="form-control user-input mx-auto" id="levelToReach" placeholder="1 to 100">
+                  </div>
+                </div>
                 <button type="button" class="btn btn-primary mb-2 submit-btn mt-4">Hit me Guardian</button>
               </div>
               <div class="col-12 text-center posted-info-content">
@@ -76,7 +81,7 @@
         </div>
       </div>
     </main>
-    <footer>
+    <footer class="mt-auto">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12 d-flex flex-row justify-content-center">

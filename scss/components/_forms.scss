@@ -7,6 +7,11 @@
     .form-wrapper {
       position: relative;
 
+      .user-input {
+        width: 90px;
+        padding: 11px 8px;
+      }
+
       .posted-info-content {
         &.show {
           position: absolute;

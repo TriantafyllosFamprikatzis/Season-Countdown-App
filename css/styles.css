@@ -373,11 +373,16 @@ html {
 }
 
 body {
-  font-family: "Ubuntu", sans-serif;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("../images/tree_vex.jpg");
   background-color: #28293b;
+}
+
+h1, h2, h3 {
+  font-family: "Spartan", sans-serif;
 }
 
 h1 {
@@ -403,20 +408,17 @@ a {
 
 header .title-content {
   color: #fff;
-  background-color: #28293b;
+  background-color: #12171c;
 }
 
 footer {
-  padding: 7px 0;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  padding: 5px 0;
   color: #fff;
-  background-color: #28293b;
+  background-color: #12171c;
 }
 footer p {
   margin-top: 8px;
+  font-size: 1rem;
 }
 footer .github {
   background-image: url("../images/github.svg");
@@ -427,7 +429,7 @@ footer .github {
   margin-left: 5px;
   width: 30px;
   height: 30px;
-  background-size: 30px 30px;
+  background-size: 30px 55px;
   opacity: 0.5;
   transition: all 0.4s;
 }
@@ -442,10 +444,45 @@ footer .github:hover {
   #BUTTONS
 \*------------------------------------*/
 .btn-primary {
-  border: 2px solid #000;
+  border: 3px solid #000;
   border-radius: 15px;
-  padding: 11px 39px;
-  background-color: grey;
+  padding: 11px 30px 11px 55px;
+  background-color: #000;
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: all 0.25s ease-in-out;
+}
+.btn-primary:before {
+  content: "";
+  background-image: url("../images/destiny_btn_black.jpg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 27px;
+  position: absolute;
+  top: 7px;
+  left: 23px;
+  width: 27px;
+  height: 27px;
+}
+.btn-primary:hover {
+  background-color: #000;
+  border: 3px solid #fff;
+  transition: all 0.25s ease-in-out;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+  background-color: #000;
+  border-color: #fff;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+  box-shadow: unset;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: unset;
 }
 
 .clock-container {
@@ -492,6 +529,10 @@ footer .github:hover {
 \*------------------------------------*/
 .form-content .form-container .form-wrapper {
   position: relative;
+}
+.form-content .form-container .form-wrapper .user-input {
+  width: 90px;
+  padding: 11px 8px;
 }
 .form-content .form-container .form-wrapper .posted-info-content.show {
   position: absolute;
