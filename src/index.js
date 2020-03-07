@@ -5,10 +5,6 @@ let levelToReach = document.getElementById('levelToReach');
 let userForm = document.getElementById('user-form');
 let resetForm = document.getElementById('reset-form');
 let infoContainer = document.getElementsByClassName('info-container')[0];
-let enterKeyClicked = false;
-let submitBtnClicked = false;
-let firstInputCorrectValue = false;
-let secondInputCorrectValue = false;
 
 
 //Functions
@@ -84,7 +80,7 @@ function preventLettersOnInput() {
       if ( e.shiftKey || e.ctrlKey || e.altKey ) {
         e.preventDefault();
       } else if (key == 13) {
-        enterKeyClicked = true;
+        inputValueInit();
       } else {
         if (!((key == 8) || (key ==9) || (key == 46) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
           e.preventDefault();
@@ -93,6 +89,47 @@ function preventLettersOnInput() {
     });
   });
 }; preventLettersOnInput();
+
+
+function inputValueInit() {  
+  let firstInputValue = parseInt(userCurrentLevel.value, 10);
+  let secondInputValue = parseInt(levelToReach.value, 10);
+  if ( firstInputValue >= 1 && secondInputValue >= 1 && firstInputValue <= 99 && secondInputValue <= 100 ) {
+    if ( firstInputValue < secondInputValue ) {
+      calculateLevelPerDay();
+      resetForm.classList.remove('d-none');
+      resetForm.classList.add('d-block');
+      userForm.classList.remove('d-block');
+      userForm.classList.add('d-none');
+    } else if ( firstInputValue >= 1 && firstInputValue <= 99 && secondInputValue >= 1 && secondInputValue <= 100 && firstInputValue > secondInputValue ) {
+      event.preventDefault();
+      alert('Enter a level higher than your current level');
+    } else if ( firstInputValue >= 1 && firstInputValue <= 99 && secondInputValue >= 1 && secondInputValue <= 100 && firstInputValue == secondInputValue ) {
+      event.preventDefault();
+      alert('Level reached');
+    } else if ( firstInputValue >= 1 && firstInputValue <= 99 && secondInputValue >= 1 && secondInputValue <= 100 && firstInputValue < secondInputValue ) {
+      event.preventDefault();
+      alert('Current level cannot be higher from level to reach');
+    }
+  } else if ( firstInputValue == 100 ) {
+    event.preventDefault();
+    alert('Max level reached');
+  } else if ( firstInputValue == 0 || firstInputValue >= 100 ) {
+    event.preventDefault();
+    alert('Please enter a number between 1 and 99');
+  } else if ( secondInputValue == 0 || secondInputValue >= 101 ) {
+    event.preventDefault();
+    alert('Please enter a number between 1 and 100');
+  }
+};
+
+
+function submitBtnInit() {
+  let submitBtn = document.getElementsByClassName('submit-btn')[0];
+  submitBtn.addEventListener('click', function() {
+    inputValueInit();
+  });
+}; submitBtnInit();
 
 
 function resetBtnInit() {
@@ -105,138 +142,5 @@ function resetBtnInit() {
     infoContainer.removeChild(infoContainer.childNodes[0]); 
     levelToReach.value = "";
     userCurrentLevel.value = "";
-    enterKeyClicked = false;
-    submitBtnClicked = false;
-    firstInputCorrectValue = false;
-    secondInputCorrectValue = false;
   });
 }; resetBtnInit();
-
-
-function submitBtnInit() {
-  let submitBtn = document.getElementsByClassName('submit-btn')[0];
-  submitBtn.addEventListener('click', function() {
-    submitBtnClicked = true;
-    let firstInputOnSubmit = userCurrentLevel.value;
-    let secondInputOnSubmit = levelToReach.value;
-    if ( firstInputOnSubmit >= 1 && secondInputOnSubmit >= 1 && firstInputOnSubmit <= 99 && secondInputOnSubmit <= 100 ) {
-      if ( submitBtnClicked == true && secondInputCorrectValue == true && firstInputCorrectValue == true && firstInputOnSubmit < secondInputOnSubmit ) {
-        calculateLevelPerDay();
-        resetForm.classList.remove('d-none');
-        resetForm.classList.add('d-block');
-        userForm.classList.remove('d-block');
-        userForm.classList.add('d-none');
-      } else if ( submitBtnClicked == true && firstInputOnSubmit >= 1 && firstInputOnSubmit <= 99 && secondInputOnSubmit >= 1 && secondInputOnSubmit <= 100 && firstInputOnSubmit > secondInputOnSubmit ) {
-        event.preventDefault();
-        alert('Enter a level higher than your current level');
-        firstInputCorrectValue = false;
-        secondInputCorrectValue = false;
-        enterKeyClicked = false;
-        submitBtnClicked = false;
-      } else if ( submitBtnClicked == true && firstInputOnSubmit >= 1 && firstInputOnSubmit <= 99 && secondInputOnSubmit >= 1 && secondInputOnSubmit <= 100 && firstInputOnSubmit == secondInputOnSubmit ) {
-        event.preventDefault();
-        alert('Level reached');
-        firstInputCorrectValue = false;
-        secondInputCorrectValue = false;
-        enterKeyClicked = false;
-        submitBtnClicked = false;
-      }
-    } else if ( submitBtnClicked == true && firstInputOnSubmit == 100 ) {
-      event.preventDefault();
-      alert('Max level reached');
-      firstInputCorrectValue = false;
-      enterKeyClicked = false;
-      submitBtnClicked = false;
-    } else if ( submitBtnClicked == true && firstInputOnSubmit == 0 || firstInputOnSubmit >= 100 ) {
-      event.preventDefault();
-      alert('Please enter a number between 1 and 99');
-      firstInputCorrectValue = false;
-      enterKeyClicked = false;
-      submitBtnClicked = false;
-    } else if ( submitBtnClicked == true && secondInputOnSubmit == 0 || secondInputOnSubmit >= 101 ) {
-      event.preventDefault();
-      alert('Please enter a number between 1 and 100');
-      secondInputCorrectValue = false;
-      enterKeyClicked = false;
-      submitBtnClicked = false;
-    }
-  });
-}; submitBtnInit();
-
-
-function firstInput(secondInputVal) {
-  userCurrentLevel.addEventListener('keyup', function() {
-    let firstInputVal = parseInt(this.value);
-    if ( firstInputVal >= 1 && firstInputVal <= 99 ) {
-      firstInputCorrectValue = true;
-      if ( enterKeyClicked == true && secondInputCorrectValue == true && firstInputCorrectValue == true && firstInputVal < secondInputVal ) {
-        calculateLevelPerDay();
-        resetForm.classList.remove('d-none');
-        resetForm.classList.add('d-block');
-        userForm.classList.remove('d-block');
-        userForm.classList.add('d-none');
-      } else if ( enterKeyClicked == true && firstInputVal >= 1 && firstInputVal <= 99 &&  firstInputVal > secondInputVal ) {
-        event.preventDefault();
-        alert('Enter a level higher than your current level');
-        firstInputCorrectValue = false;
-        enterKeyClicked = false;
-        submitBtnClicked = false;
-      } else if ( enterKeyClicked == true && firstInputVal >= 1 && firstInputVal <= 99 && firstInputVal == secondInputVal ) {
-        event.preventDefault();
-        alert('Level reached');
-        firstInputCorrectValue = false;
-        enterKeyClicked = false;
-        submitBtnClicked = false;
-      }
-    } else if ( enterKeyClicked == true && firstInputVal == 100 ) {
-      event.preventDefault();
-      alert('Max level reached');
-      firstInputCorrectValue = false;
-      enterKeyClicked = false;
-      submitBtnClicked = false;
-    } else if ( enterKeyClicked == true && firstInputVal == 0 || firstInputVal >= 100 ) {
-      event.preventDefault();
-      alert('Please enter a number between 1 and 99');
-      firstInputCorrectValue = false;
-      enterKeyClicked = false;
-      submitBtnClicked = false;
-    }
-    secondInput(firstInputVal); //This passes the input value to the second input function
-  });
-}; firstInput();
-
-
-function secondInput(firstInputVal) {
-  levelToReach.addEventListener('keyup', function() {
-    let secondInputVal = parseInt(this.value);
-    if ( secondInputVal >= 1 && secondInputVal <= 100 ) {
-      secondInputCorrectValue = true;
-      if ( enterKeyClicked == true && secondInputCorrectValue == true && firstInputCorrectValue == true && firstInputVal < secondInputVal ) {
-        calculateLevelPerDay();
-        resetForm.classList.remove('d-none');
-        resetForm.classList.add('d-block');
-        userForm.classList.remove('d-block');
-        userForm.classList.add('d-none');
-      } else if ( enterKeyClicked == true && secondInputVal >= 1 && secondInputVal <= 100 && firstInputVal > secondInputVal ) {
-        event.preventDefault();
-        alert('Enter a level higher than your current level');
-        secondInputCorrectValue = false;
-        enterKeyClicked = false;
-        submitBtnClicked = false;
-      } else if ( enterKeyClicked == true && secondInputVal >= 1 && secondInputVal <= 100 && firstInputVal == secondInputVal ) {
-        event.preventDefault();
-        alert('Level reached');
-        secondInputCorrectValue = false;
-        enterKeyClicked = false;
-        submitBtnClicked = false;
-      }
-    } else if ( enterKeyClicked == true && secondInputVal == 0 || secondInputVal >= 101 ) {
-      event.preventDefault();
-      alert('Please enter a number between 1 and 100');
-      secondInputCorrectValue = false;
-      enterKeyClicked = false;
-      submitBtnClicked = false;
-    }
-    firstInput(secondInputVal); //This passes the input value to the first input function
-  });
-}; secondInput();
