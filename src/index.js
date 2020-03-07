@@ -1,3 +1,5 @@
+import './styles/styles.scss';
+
 //Global variables
 let userInput = document.querySelectorAll('.user-input'); 
 let userCurrentLevel = document.getElementById('userCurrentLevel');

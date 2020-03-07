@@ -15,7 +15,9 @@
 
   &:before {
     content: "";
-    background-image: url('../images/destiny_btn_black.jpg');
+    // background-image: url('///images/destiny_btn_black.jpg');
+
+    // background-image: url('../../images/destiny_btn_black.jpg');
     background-repeat: no-repeat;
     background-position: left center;
     background-size: 27px;
