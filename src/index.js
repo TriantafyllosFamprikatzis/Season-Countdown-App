@@ -1,6 +1,7 @@
+
 import './styles/styles.scss';
 
-//Global variables
+// //Global variables
 let userInput = document.querySelectorAll('.user-input'); 
 let userCurrentLevel = document.getElementById('userCurrentLevel');
 let levelToReach = document.getElementById('levelToReach');
@@ -49,20 +50,16 @@ let deadline = 'March 09 2020 23:59:59';
 initializeClock('clockdiv', deadline);
 
 
-function calculateRemainingDays() {
-  today = new Date();
-  seasonEndDay = new Date(deadline);
-  msPerDay = 24 * 60 * 60 * 1000 ;
-  timeLeft = (seasonEndDay.getTime() - today.getTime());
-  daysLeftRaw = timeLeft / msPerDay;
-  daysLeft = Math.floor(daysLeftRaw);
-  hrsLeftRaw = (daysLeftRaw - daysLeft)*24;
-  hrsLeft = Math.floor(hrsLeftRaw);
-  minsLeft = Math.floor((hrsLeftRaw - hrsLeft)*60);
-}; calculateRemainingDays();
-
-
 function calculateLevelPerDay() {
+  let today = new Date();
+  let seasonEndDay = new Date(deadline);
+  let msPerDay = 24 * 60 * 60 * 1000 ;
+  let timeLeft = (seasonEndDay.getTime() - today.getTime());
+  let daysLeftRaw = timeLeft / msPerDay;
+  let daysLeft = Math.floor(daysLeftRaw);
+  let hrsLeftRaw = (daysLeftRaw - daysLeft)*24;
+  let hrsLeft = Math.floor(hrsLeftRaw);
+  // let minsLeft = Math.floor((hrsLeftRaw - hrsLeft)*60); // Not used for now
   let maxLevel = levelToReach.value;
   let currentLevel = userCurrentLevel.value;
   let daysWithHours = Math.floor((hrsLeft / 24) * 100) / 100 + daysLeft;
