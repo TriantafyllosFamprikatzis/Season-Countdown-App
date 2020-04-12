@@ -46,7 +46,7 @@ function initializeClock(id, endtime) {
   updateClock();
   let timeinterval = setInterval(updateClock, 1000);
 }
-let deadline = 'March 09 2020 23:59:59';
+let deadline = 'March 09 2021 23:59:59';
 initializeClock('clockdiv', deadline);
 
 
